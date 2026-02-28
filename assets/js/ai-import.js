@@ -162,12 +162,38 @@ async function extractPDFWithGemini(base64, stEl) {
 
 function processAIResponse(txt, stEl) {
     try {
+        console.log("Traitement de la réponse AI...");
         var json = JSON.parse(txt);
-        fillAllFields(json);
-        stEl.style.background = 'rgba(45,106,79,.1)'; stEl.style.color = 'var(--sage)';
-        stEl.innerHTML = '&#10003; <div><strong>Importation réussie !</strong><br><span style="font-weight:400">Vos champs ont été remplis par Gemini.</span></div>';
-        setTimeout(function () { goStep(1); }, 1500);
+
+        // Sécurité : on s'assure que fillAllFields ne bloque pas tout
+        try {
+            fillAllFields(json);
+        } catch (fillErr) {
+            console.error("Erreur durant fillAllFields:", fillErr);
+        }
+
+        stEl.style.background = 'rgba(45,106,79,.1)';
+        stEl.style.color = 'var(--sage)';
+        stEl.innerHTML = `
+            <div style="display:flex; align-items:center; gap:12px; width:100%">
+                <span style="font-size:1.5rem">&#10003;</span>
+                <div style="flex:1">
+                    <strong>Importation réussie !</strong><br>
+                    <span style="font-weight:400; font-size:0.85rem">Vos informations ont été extraites.</span>
+                </div>
+                <button class="btn-next" onclick="goStep(1)" style="padding: 8px 16px; font-size: 0.8rem; margin:0">
+                    Continuer ➜
+                </button>
+            </div>
+        `;
+
+        // Redirection automatique après 3 secondes si l'utilisateur ne clique pas
+        setTimeout(function () {
+            if (ST.step === 0) goStep(1);
+        }, 3000);
+
     } catch (e) {
+        console.error("Erreur parse AI:", e);
         stEl.style.color = 'var(--red)';
         stEl.innerHTML = '&#9888; Erreur de traitement des données IA.';
     }
