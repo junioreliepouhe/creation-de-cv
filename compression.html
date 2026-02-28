@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compresseur PDF - CV Rapide</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        .compress-box {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .drop-zone {
+            border: 2px dashed var(--border2);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: var(--bg2);
+        }
+
+        .drop-zone:hover {
+            border-color: var(--accent);
+            background: var(--al);
+        }
+
+        .file-info {
+            margin: 20px 0;
+            font-size: 0.9rem;
+            color: var(--muted);
+            display: none;
+        }
+
+        .btn-compress {
+            background: var(--grad);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px var(--sh2);
+            display: none;
+        }
+
+        #quality-value {
+            font-weight: bold;
+            color: var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">📄</span>
+                <div>
+                    <h1 style="font-size:1.1rem;margin:0">CV Rapide</h1>
+                    <p style="font-size:0.7rem;margin:0;opacity:0.8">Compresseur Intelligent</p>
+                </div>
+            </div>
+            <nav>
+                <a href="index.html" class="btn-back">← Retour au générateur</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="compress-box">
+            <h2>Compresser votre PDF</h2>
+            <p style="color:var(--muted);font-size:0.9rem">Cible recommandée : ~50 Ko</p>
+
+            <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInp').click()">
+                <span style="font-size:3rem">📂</span>
+                <p>Cliquez ou glissez votre PDF ici</p>
+                <input type="file" id="fileInp" accept="application/pdf" style="display:none"
+                    onchange="handleFile(this)">
+            </div>
+
+            <div id="fileInfo" class="file-info">
+                <p>Fichier : <span id="fileName"></span> (<span id="fileSize"></span>)</p>
+                <div style="margin-top:15px">
+                    <label>Qualité de compression : <span id="quality-value">50%</span></label>
+                    <input type="range" id="qualityRange" min="5" max="90" value="50" style="width:100%"
+                        oninput="document.getElementById('quality-value').textContent = this.value + '%'">
+                </div>
+            </div>
+
+            <button id="compressBtn" class="btn-compress" onclick="compressPDF()">Compresser maintenant</button>
+
+            <div id="status" style="margin-top:20px; font-weight:600"></div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <p id="loading-msg">Compression en cours...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        var currentFile = null;
+
+        function handleFile(inp) {
+            var file = inp.files[0];
+            if (!file) return;
+            currentFile = file;
+            document.getElementById('fileName').textContent = file.name;
+            document.getElementById('fileSize').textContent = (file.size / 1024).toFixed(1) + ' Ko';
+            document.getElementById('fileInfo').style.display = 'block';
+            document.getElementById('compressBtn').style.display = 'inline-block';
+        }
+
+        async function compressPDF() {
+            if (!currentFile) return;
+            var loading = document.getElementById('loading');
+            loading.classList.add('show');
+
+            try {
+                var quality = document.getElementById('qualityRange').value / 100;
+                var arrayBuffer = await currentFile.arrayBuffer();
+                var pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                var totalPages = pdf.numPages;
+
+                var jsPDF = window.jspdf.jsPDF;
+                var outPdf = new jsPDF('p', 'mm', 'a4');
+
+                for (var i = 1; i <= totalPages; i++) {
+                    if (i > 1) outPdf.addPage();
+
+                    var page = await pdf.getPage(i);
+                    var viewport = page.getViewport({ scale: 1.5 }); // Balance between quality and size
+                    var canvas = document.createElement('canvas');
+                    var context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    await page.render({ canvasContext: context, viewport: viewport }).promise;
+
+                    var imgData = canvas.toDataURL('image/jpeg', quality);
+                    outPdf.addImage(imgData, 'JPEG', 0, 0, 210, 297, undefined, 'FAST');
+                }
+
+                var outName = 'compressed_' + currentFile.name;
+                outPdf.save(outName);
+
+                document.getElementById('status').innerHTML = '<span style="color:var(--sage)">✅ Compression terminée !</span>';
+                showToast('Fichier téléchargé !');
+            } catch (err) {
+                console.error(err);
+                showToast('Erreur lors de la compression.');
+            } finally {
+                loading.classList.remove('show');
+            }
+        }
+
+        function showToast(msg) {
+            var t = document.getElementById('toast');
+            t.textContent = msg; t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3500);
+        }
+    </script>
+</body>
+
+</html>

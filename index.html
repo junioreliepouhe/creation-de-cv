@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CréaCV — Votre CV en quelques minutes</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&family=DM+Serif+Display:ital@0;1&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS Modules -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/previews.css">
+    <link rel="stylesheet" href="assets/css/templates.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">Créa<span>CV</span></div>
+        <div class="hd-right">
+            <a href="compression.html"
+                style="font-size:0.8rem;color:var(--accent);text-decoration:none;font-weight:700;margin-right:15px;padding:6px 12px;background:var(--al);border-radius:20px">🗜️
+                Compresser PDF</a>
+            <div class="step-pills" id="pills"></div>
+            <div class="step-ctr" id="sctr">Accueil</div>
+        </div>
+    </header>
+
+    <div class="prog-bar">
+        <div class="prog-fill" id="pf" style="width:0%"></div>
+    </div>
+
+    <div class="main">
+        <!-- ÉTAPE 0 : ACCUEIL & IMPORT -->
+        <div class="step active" id="step0">
+            <div class="home-hero">
+                <div class="step-badge">✨ Nouveau & Gratuit</div>
+                <h1 class="hero-title">Créez un CV qui <span>fait la différence</span></h1>
+                <p class="hero-sub">L'outil intelligent qui transforme votre parcours en une candidature irrésistible,
+                    en quelques secondes.</p>
+
+                <div class="import-card">
+                    <div class="imp-icon">🚀</div>
+                    <h3>Importation Intelligente</h3>
+                    <p>Déjà un CV ? Importez-le (PDF ou Word) et laissez <strong>Gemini IA</strong> extraire toutes vos
+                        informations automatiquement.</p>
+
+                    <input type="file" id="importInp" accept=".pdf,.docx" style="display:none"
+                        onchange="importCV(this)">
+                    <button class="btn-import" onclick="document.getElementById('importInp').click()">
+                        <span>📂</span> Choisir un fichier
+                    </button>
+
+                    <div id="importStatus"></div>
+                </div>
+
+                <div style="margin-top:50px">
+                    <p
+                        style="margin-bottom:20px; font-weight:700; color:var(--muted); font-size:0.8rem; letter-spacing:1px">
+                        OU COMMENCEZ MANUELLEMENT</p>
+                    <button class="btn-prm" onclick="goStep(1)">
+                        Créer mon CV de zéro <span>➜</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÉTAPE 1 : DOMAINE -->
+        <div class="step" id="step1">
+            <div class="step-badge">Étape 1</div>
+            <h2>Quel est votre <span>secteur d'activité</span> ?</h2>
+            <p style="color:var(--muted);margin-bottom:30px">Nous adapterons les conseils et les compétences pour votre
+                domaine.</p>
+
+            <div class="dom-grid">
+                <div class="dom-card" data-d="etudiant" onclick="selDom(this)">
+                    <div class="dom-icon">🎓</div>
+                    <div class="dom-name">Étudiant</div>
+                </div>
+                <div class="dom-card" data-d="info" onclick="selDom(this)">
+                    <div class="dom-icon">💻</div>
+                    <div class="dom-name">Informatique</div>
+                </div>
+                <div class="dom-card" data-d="commerce" onclick="selDom(this)">
+                    <div class="dom-icon">🤝</div>
+                    <div class="dom-name">Commerce / Vente</div>
+                </div>
+                <div class="dom-card" data-d="sante" onclick="selDom(this)">
+                    <div class="dom-icon">🩺</div>
+                    <div class="dom-name">Santé</div>
+                </div>
+                <div class="dom-card" data-d="ingenierie" onclick="selDom(this)">
+                    <div class="dom-icon">🏗️</div>
+                    <div class="dom-name">Ingénierie / BTP</div>
+                </div>
+                <div class="dom-card" data-d="finance" onclick="selDom(this)">
+                    <div class="dom-icon">📊</div>
+                    <div class="dom-name">Finance / Compta</div>
+                </div>
+                <div class="dom-card" data-d="droit" onclick="selDom(this)">
+                    <div class="dom-icon">⚖️</div>
+                    <div class="dom-name">Droit / Juridique</div>
+                </div>
+                <div class="dom-card" data-d="communication" onclick="selDom(this)">
+                    <div class="dom-icon">🎨</div>
+                    <div class="dom-name">Com / Design</div>
+                </div>
+                <div class="dom-card" data-d="education" onclick="selDom(this)">
+                    <div class="dom-icon">🏫</div>
+                    <div class="dom-name">Éducation</div>
+                </div>
+                <div class="dom-card" data-d="hotellerie" onclick="selDom(this)">
+                    <div class="dom-icon">🏨</div>
+                    <div class="dom-name">Hôtellerie</div>
+                </div>
+                <div class="dom-card" data-d="rh" onclick="selDom(this)">
+                    <div class="dom-icon">👥</div>
+                    <div class="dom-name">RH</div>
+                </div>
+                <div class="dom-card" data-d="autre" onclick="selDom(this)">
+                    <div class="dom-icon">✨</div>
+                    <div class="dom-name">Autre / Général</div>
+                </div>
+            </div>
+
+            <div class="err-box" id="e1">Veuillez sélectionner un domaine pour continuer.</div>
+            <div class="nav"><button class="btn-sec" onclick="goStep(0)">Retour</button><button class="btn-prm"
+                    onclick="goNext(1)">Suivant</button></div>
+        </div>
+
+        <!-- ÉTAPE 2 : MODÈLE -->
+        <div class="step" id="step2">
+            <div class="step-badge">Étape 2</div>
+            <h2>Choisissez votre <span>modèle</span></h2>
+            <p style="color:var(--muted);margin-bottom:30px">Tous nos designs sont optimisés pour être lus par les
+                logiciels de recrutement (ATS).</p>
+
+            <div class="tpl-grid">
+                <!-- Modèles T1 à T10 (thumbnails) -->
+                <div class="tpl-card" data-t="t1" onclick="selTpl(this)">
+                    <div class="tpl-tag">✨ Populaire</div>
+                    <div class="cv-mini t1">...</div>
+                    <div class="tpl-name">T1 : Classique Pro</div>
+                </div>
+                <div class="tpl-card" data-t="t2" onclick="selTpl(this)">
+                    <div class="cv-mini t2">...</div>
+                    <div class="tpl-name">T2 : Moderne Sidebar</div>
+                </div>
+                <div class="tpl-card" data-t="t3" onclick="selTpl(this)">
+                    <div class="cv-mini t3">...</div>
+                    <div class="tpl-name">T3 : Épuré Doré</div>
+                </div>
+                <div class="tpl-card" data-t="t4" onclick="selTpl(this)">
+                    <div class="cv-mini t4">...</div>
+                    <div class="tpl-name">T4 : Élégant Violet</div>
+                </div>
+                <div class="tpl-card" data-t="t5" onclick="selTpl(this)">
+                    <div class="cv-mini t5">...</div>
+                    <div class="tpl-name">T5 : Minimaliste B&W</div>
+                </div>
+                <div class="tpl-card" data-t="t6" onclick="selTpl(this)">
+                    <div class="cv-mini t6">...</div>
+                    <div class="tpl-name">T6 : Corporate Blue</div>
+                </div>
+                <div class="tpl-card" data-t="t7" onclick="selTpl(this)">
+                    <div class="cv-mini t7">...</div>
+                    <div class="tpl-name">T7 : Vert Nature</div>
+                </div>
+                <div class="tpl-card" data-t="t8" onclick="selTpl(this)">
+                    <div class="cv-mini t8">...</div>
+                    <div class="tpl-name">T8 : Créatif Rose</div>
+                </div>
+                <div class="tpl-card" data-t="t9" onclick="selTpl(this)">
+                    <div class="cv-mini t9">...</div>
+                    <div class="tpl-name">T9 : Dark Mode Tech</div>
+                </div>
+                <div class="tpl-card" data-t="t10" onclick="selTpl(this)">
+                    <div class="cv-mini t10">...</div>
+                    <div class="tpl-name">T10 : Magazine Style</div>
+                </div>
+            </div>
+
+            <div class="err-box" id="e2">Veuillez choisir un modèle pour continuer.</div>
+            <div class="nav"><button class="btn-sec" onclick="goStep(1)">Retour</button><button class="btn-prm"
+                    onclick="goNext(2)">Suivant</button></div>
+        </div>
+
+        <!-- ÉTAPE 3 : INFOS PERSO -->
+        <div class="step" id="step3">
+            <div class="step-badge">Étape 3</div>
+            <h2>Vos <span>informations personnelles</span></h2>
+            <div class="tip-box" id="tipStu"><span class="tip-i">💡</span>
+                <div class="tip-t"><strong>Conseil Étudiant :</strong> Assurez-vous que votre numéro de téléphone est
+                    joignable sur WhatsApp, c'est souvent utilisé pour les premiers contacts.</div>
+            </div>
+
+            <div class="form-container">
+                <div class="photo-section">
+                    <div class="photo-preview" id="photoPreview"><span>👤</span></div>
+                    <input type="file" id="photoInp" accept="image/*" style="display:none" onchange="handlePhoto(this)">
+                    <button class="btn-sec" onclick="document.getElementById('photoInp').click()"
+                        style="font-size:0.8rem">Ajouter une photo</button>
+                </div>
+
+                <div class="fg">
+                    <div class="field"><label>Prénom *</label><input type="text" id="firstName" placeholder="Ex: Elie">
+                    </div>
+                    <div class="field"><label>Nom *</label><input type="text" id="lastName" placeholder="Ex: POUHE">
+                    </div>
+                </div>
+                <div class="fg f1">
+                    <div class="field"><label id="lbl-title">Poste / Titre du CV</label><input type="text"
+                            id="jobTitle"><small id="h-title"></small></div>
+                </div>
+                <div class="fg">
+                    <div class="field"><label>Email *</label><input type="email" id="email"><small id="h-email"></small>
+                    </div>
+                    <div class="field"><label>Téléphone *</label><input type="text" id="phone"><small
+                            id="h-phone"></small></div>
+                </div>
+                <div class="fg">
+                    <div class="field"><label>Ville / Pays</label><input type="text" id="city"><small
+                            id="h-nat"></small></div>
+                    <div class="field"><label>Nationalité</label><input type="text" id="nationality"></div>
+                </div>
+                <div class="fg">
+                    <div class="field"><label>Date de naissance</label>
+                        <div class="dob-group"><select id="dob_d"></select><select id="dob_m"></select><select
+                                id="dob_y"></select></div>
+                    </div>
+                    <div class="field"><label>LinkedIn</label><input type="text" id="linkedin"><small
+                            id="h-linkedin"></small></div>
+                </div>
+                <div class="fg f1">
+                    <div class="field"><label id="lbl-website">Lien (GitHub/Portfolio)</label><input type="text"
+                            id="website"><small id="h-website"></small></div>
+                </div>
+
+                <div style="margin-top:15px"><button type="button" class="btn-sub" onclick="addLink()">+ Ajouter
+                        d'autres liens (GitHub, Portfolio...)</button></div>
+                <div id="linksBlocks" style="margin-top:15px"></div>
+
+                <div class="fg f1" style="margin-top:30px">
+                    <div class="field">
+                        <label>Profil / Résumé professionnel</label>
+                        <div class="tip-mini"><span id="profileTip"></span></div>
+                        <textarea id="profile" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="nav"><button class="btn-sec" onclick="goStep(2)">Retour</button><button class="btn-prm"
+                    onclick="goNext(3)">Suivant</button></div>
+        </div>
+
+        <!-- ÉTAPE 4 : PARCOURS -->
+        <div class="step" id="step4">
+            <div class="step-badge">Étape 4</div>
+            <h2 id="eduTitle">Formations & Expériences</h2>
+            <p id="s4sub" style="color:var(--muted);margin-bottom:20px"></p>
+
+            <div class="card">
+                <h3 id="eduSubtitle">Formation</h3>
+                <div id="eduBlocks"></div>
+                <button class="btn-sub" onclick="addEdu()">+ Ajouter une formation</button>
+            </div>
+
+            <div class="card" style="margin-top:24px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                    <h3 id="expTitle">Expériences</h3>
+                    <label class="check-container"><input type="checkbox" id="noExp"
+                            onchange="document.getElementById('expSection').style.display=this.checked?'none':'block'"><span
+                            class="checkmark"></span> <span id="noExpLbl" style="font-size:0.85rem"></span></label>
+                </div>
+                <div id="expSection">
+                    <div id="expBlocks"></div>
+                    <button class="btn-sub" onclick="addExp()">+ Ajouter une expérience</button>
+                </div>
+            </div>
+
+            <!-- Projets (Optionnel selon domaine) -->
+            <div class="card" id="projCard" style="margin-top:24px;display:none">
+                <h3 id="projUrlTitle">Projets académiques</h3>
+                <p class="tip-mini" id="projUrlTip"></p>
+                <div id="projBlocks"></div>
+                <button class="btn-sub" onclick="addProj()">+ Ajouter un projet</button>
+            </div>
+
+            <div class="nav"><button class="btn-sec" onclick="goStep(3)">Retour</button><button class="btn-prm"
+                    onclick="goStep(5)">Suivant</button></div>
+        </div>
+
+        <!-- ÉTAPE 5 : COMPÉTENCES -->
+        <div class="step" id="step5">
+            <div class="step-badge">Étape 5</div>
+            <h2>Derniers <span>détails</span></h2>
+
+            <div class="card">
+                <h3>Compétences</h3>
+                <p id="skillsSubtitle" style="color:var(--muted);font-size:0.85rem;margin-bottom:12px"></p>
+                <div class="skill-cloud" id="skillCloud"></div>
+                <div style="margin-top:15px;display:flex;gap:10px">
+                    <input type="text" id="customSkill" placeholder="Ajouter une autre compétence..."
+                        style="flex:1;padding:10px;border-radius:10px;border:1.5px solid var(--border)">
+                    <button class="btn-sec" onclick="addCustomSkill()">Ajouter</button>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top:24px">
+                <h3>Langues</h3>
+                <p class="tip-mini" id="langsTip"></p>
+                <div id="langRows"></div>
+                <button class="btn-sub" onclick="addLang()">+ Ajouter une langue</button>
+            </div>
+
+            <div class="card" id="actCard" style="margin-top:24px;display:none">
+                <h3>Activités & Bénévolat</h3>
+                <div id="actBlocks"></div>
+                <button class="btn-sub" onclick="addAct()">+ Ajouter une activité</button>
+            </div>
+
+            <div class="card" style="margin-top:24px">
+                <h3>Centres d'intérêt</h3>
+                <textarea id="hobbies" rows="2" placeholder="Ex: Sport, Voyage, Musique..."></textarea>
+                <small id="hobbiesHint"></small>
+            </div>
+
+            <div class="nav"><button class="btn-sec" onclick="goStep(4)">Retour</button><button class="btn-prm"
+                    onclick="goStep(6)">Générer mon CV ✨</button></div>
+        </div>
+
+        <!-- ÉTAPE 6 : RÉSULTAT -->
+        <div class="step" id="step6">
+            <div class="result-header">
+                <div>
+                    <div class="step-badge">Félicitations ! 🎉</div>
+                    <h2>Votre CV est <span>prêt</span></h2>
+                </div>
+                <div style="display:flex;gap:10px">
+                    <button class="btn-sec" onclick="goStep(3)">Modifier</button>
+                    <button class="btn-prm" onclick="downloadPDF()">Imprimer / PDF</button>
+                    <button class="btn-prm" style="background:#2b5797" onclick="downloadWord()">Word .docx</button>
+                </div>
+            </div>
+
+            <div class="preview-container">
+                <div id="cv-out"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Génération en cours...</p>
+    </div>
+
+    <!-- Libs -->
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+    <!-- App Modules -->
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/cv-data.js"></script>
+    <script src="assets/js/cv-render.js"></script>
+    <script src="assets/js/ai-import.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1734 @@
+/* =============================================
+   10 CV TEMPLATE STYLES
+============================================= */
+/* common resets */
+.cv-wrap {
+    font-family: 'Plus Jakarta Sans', 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #111
+}
+
+/* Prevent items from being cut across pages */
+.cv-wrap .item {
+    page-break-inside: avoid;
+    break-inside: avoid
+}
+
+.cv-wrap h2 {
+    page-break-after: avoid;
+    break-after: avoid
+}
+
+.cv-wrap .section {
+    page-break-inside: avoid;
+    break-inside: avoid
+}
+
+/* --- T1: CLASSIQUE --- */
+.cv-t1 {
+    padding: 48px;
+    font-family: Georgia, 'Times New Roman', serif
+}
+
+.cv-t1 .top {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 2.5px solid #14213d
+}
+
+.cv-t1 .photo {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem
+}
+
+.cv-t1 .name {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #14213d
+}
+
+.cv-t1 .role {
+    font-size: 13px;
+    color: #4a5568;
+    margin-top: 3px
+}
+
+.cv-t1 .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+    font-size: 11.5px;
+    color: #4a5568
+}
+
+.cv-t1 h2 {
+    font-size: 11.5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #14213d;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 3px;
+    margin: 16px 0 10px
+}
+
+.cv-t1 .item {
+    margin-bottom: 12px
+}
+
+.cv-t1 .ihead {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 13px
+}
+
+.cv-t1 .isub {
+    font-style: italic;
+    font-size: 12px;
+    color: #4a5568;
+    margin-top: 2px
+}
+
+.cv-t1 .idesc {
+    font-size: 12px;
+    color: #4a5568;
+    margin-top: 4px;
+    line-height: 1.6
+}
+
+.cv-t1 .profile {
+    font-size: 12.5px;
+    color: #4a5568;
+    line-height: 1.7
+}
+
+.cv-t1 .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px
+}
+
+.cv-t1 .sk {
+    background: #f7f5f0;
+    border: 1px solid #e2e8f0;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 11.5px;
+    font-family: Georgia, serif
+}
+
+.cv-t1 .langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px
+}
+
+.cv-t1 .lang {
+    font-size: 12px;
+    color: #4a5568
+}
+
+.cv-t1 .website-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 5px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: #1d4ed8;
+    margin-top: 4px
+}
+
+/* --- T2: MODERNE 2 COLS --- */
+.cv-t2 {
+    display: flex;
+    min-height: 0
+}
+
+.cv-t2 .sidebar {
+    width: 34%;
+    background: #1e3a8a;
+    color: white;
+    padding: 36px 20px
+}
+
+.cv-t2 .main {
+    width: 66%;
+    background: white;
+    padding: 40px 28px
+}
+
+.cv-t2 .photo {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, .3);
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 10px;
+    background: linear-gradient(135deg, #60a5fa, #34d399);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem
+}
+
+.cv-t2 .s-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: white;
+    text-align: center;
+    word-break: break-word
+}
+
+.cv-t2 .s-role {
+    font-size: 10.5px;
+    color: #93c5fd;
+    text-align: center;
+    margin-top: 4px;
+    font-weight: 500
+}
+
+.cv-t2 .s-sep {
+    height: 1px;
+    background: rgba(255, 255, 255, .12);
+    margin: 16px 0
+}
+
+.cv-t2 .s-lbl {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, .4);
+    margin: 14px 0 7px
+}
+
+.cv-t2 .s-ci {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, .8);
+    margin-bottom: 4px;
+    word-break: break-all;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px
+}
+
+.cv-t2 .s-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #60a5fa;
+    flex-shrink: 0;
+    margin-top: 4px
+}
+
+.cv-t2 .s-sk {
+    display: inline-block;
+    font-size: 10px;
+    background: rgba(255, 255, 255, .12);
+    color: rgba(255, 255, 255, .9);
+    padding: 2px 9px;
+    border-radius: 3px;
+    margin: 2px 2px 2px 0
+}
+
+.cv-t2 .s-lang {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    margin-bottom: 4px;
+    color: rgba(255, 255, 255, .8)
+}
+
+.cv-t2 .s-lang-lv {
+    color: rgba(255, 255, 255, .4);
+    font-size: 9.5px
+}
+
+.cv-t2 .m-name {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1e3a8a;
+    line-height: 1.1
+}
+
+.cv-t2 .m-role {
+    font-size: 12.5px;
+    color: #2563eb;
+    font-weight: 600;
+    margin-top: 3px;
+    margin-bottom: 18px
+}
+
+.cv-t2 .m-profile {
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.7;
+    padding: 12px 14px;
+    background: #eff6ff;
+    border-radius: 8px;
+    border-left: 3px solid #2563eb;
+    margin-bottom: 22px
+}
+
+.cv-t2 h2 {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1e3a8a;
+    border-bottom: 2px solid #1e3a8a;
+    padding-bottom: 4px;
+    margin: 0 0 12px
+}
+
+.cv-t2 .section {
+    margin-bottom: 20px
+}
+
+.cv-t2 .item {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f1f5f9
+}
+
+.cv-t2 .item:last-child {
+    border-bottom: none
+}
+
+.cv-t2 .ihead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline
+}
+
+.cv-t2 .ititle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a
+}
+
+.cv-t2 .idate {
+    font-size: 10px;
+    color: #94a3b8;
+    background: #f8fafc;
+    padding: 2px 7px;
+    border-radius: 4px
+}
+
+.cv-t2 .iorg {
+    font-size: 11px;
+    color: #2563eb;
+    font-weight: 600;
+    margin: 2px 0
+}
+
+.cv-t2 .idesc {
+    font-size: 11.5px;
+    color: #475569;
+    margin-top: 4px;
+    line-height: 1.6
+}
+
+.cv-t2 .site-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 10.5px;
+    color: #1d4ed8;
+    margin-top: 3px
+}
+
+/* --- T3: ÉPURÉ DORÉ --- */
+.cv-t3 {
+    padding: 52px 54px;
+    min-height: 0;
+    border-top: 5px solid #d97706
+}
+
+.cv-t3 .top {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 4px
+}
+
+.cv-t3 .photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #d97706, #dc2626);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem
+}
+
+.cv-t3 .name {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -.5px;
+    color: #111;
+    line-height: 1
+}
+
+.cv-t3 .role {
+    font-size: 12.5px;
+    color: #d97706;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 5px
+}
+
+.cv-t3 .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 11px;
+    color: #888;
+    margin: 12px 0;
+    padding: 12px 0;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb
+}
+
+.cv-t3 .profile {
+    font-size: 12.5px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 20px
+}
+
+.cv-t3 h2 {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #d97706;
+    margin: 20px 0 10px
+}
+
+.cv-t3 .item {
+    display: grid;
+    grid-template-columns: 105px 1fr;
+    gap: 0 16px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f5f5f0
+}
+
+.cv-t3 .item:last-child {
+    border-bottom: none
+}
+
+.cv-t3 .idate {
+    font-size: 10px;
+    color: #aaa;
+    padding-top: 2px
+}
+
+.cv-t3 .ititle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111
+}
+
+.cv-t3 .iorg {
+    font-size: 11px;
+    color: #d97706;
+    font-weight: 600
+}
+
+.cv-t3 .idesc {
+    font-size: 11.5px;
+    color: #555;
+    margin-top: 3px;
+    line-height: 1.6
+}
+
+.cv-t3 .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px
+}
+
+.cv-t3 .sk {
+    font-size: 11px;
+    padding: 3px 12px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 4px;
+    color: #444
+}
+
+.cv-t3 .langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px
+}
+
+.cv-t3 .lang {
+    font-size: 11.5px;
+    color: #555
+}
+
+.cv-t3 .lang strong {
+    color: #d97706
+}
+
+.cv-t3 .site-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid #fcd34d;
+    background: #fffbeb;
+    border-radius: 4px;
+    padding: 2px 9px;
+    font-size: 10.5px;
+    color: #92400e;
+    margin-top: 3px
+}
+
+/* --- T4: ÉLÉGANT VIOLET --- */
+.cv-t4 {
+    display: flex;
+    min-height: 0
+}
+
+.cv-t4 .sidebar {
+    width: 36%;
+    background: #1e1b4b;
+    color: white;
+    padding: 36px 22px
+}
+
+.cv-t4 .main {
+    width: 64%;
+    background: white;
+    padding: 40px 28px
+}
+
+.cv-t4 .photo {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, .25);
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 10px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem
+}
+
+.cv-t4 .s-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: white;
+    text-align: center;
+    word-break: break-word
+}
+
+.cv-t4 .s-role {
+    font-size: 10.5px;
+    color: rgba(165, 180, 252, .85);
+    text-align: center;
+    margin-top: 4px
+}
+
+.cv-t4 .s-sep {
+    height: 1px;
+    background: rgba(255, 255, 255, .1);
+    margin: 16px 0
+}
+
+.cv-t4 .s-lbl {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, .35);
+    margin: 14px 0 7px
+}
+
+.cv-t4 .s-ci {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, .8);
+    margin-bottom: 4px;
+    word-break: break-all;
+    display: flex;
+    gap: 6px
+}
+
+.cv-t4 .s-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #818cf8;
+    flex-shrink: 0;
+    margin-top: 4px
+}
+
+.cv-t4 .s-sk {
+    display: inline-block;
+    font-size: 10px;
+    background: rgba(99, 102, 241, .25);
+    color: rgba(255, 255, 255, .85);
+    padding: 2px 9px;
+    border-radius: 3px;
+    margin: 2px 2px 2px 0
+}
+
+.cv-t4 .s-lang {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    margin-bottom: 4px;
+    color: rgba(255, 255, 255, .8)
+}
+
+.cv-t4 .s-lang-lv {
+    color: rgba(255, 255, 255, .35);
+    font-size: 9.5px
+}
+
+.cv-t4 .m-name {
+    font-size: 25px;
+    font-weight: 800;
+    color: #1e1b4b;
+    line-height: 1.1
+}
+
+.cv-t4 .m-role {
+    font-size: 12px;
+    color: #6366f1;
+    font-weight: 600;
+    margin-top: 3px;
+    margin-bottom: 6px
+}
+
+.cv-t4 .m-profile {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.7;
+    border-left: 3px solid #6366f1;
+    padding-left: 12px;
+    margin-bottom: 22px
+}
+
+.cv-t4 h2 {
+    font-size: 10.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1e1b4b;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 7px
+}
+
+.cv-t4 h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e5e7eb
+}
+
+.cv-t4 .section {
+    margin-bottom: 20px
+}
+
+.cv-t4 .item {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0fb
+}
+
+.cv-t4 .item:last-child {
+    border-bottom: none
+}
+
+.cv-t4 .ihead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start
+}
+
+.cv-t4 .ititle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e1b4b
+}
+
+.cv-t4 .idate {
+    font-size: 10px;
+    color: #9ca3af;
+    white-space: nowrap;
+    margin-left: 8px
+}
+
+.cv-t4 .iorg {
+    font-size: 11px;
+    color: #6366f1;
+    font-weight: 600;
+    margin: 2px 0
+}
+
+.cv-t4 .idesc {
+    font-size: 11.5px;
+    color: #555;
+    margin-top: 4px;
+    line-height: 1.6
+}
+
+.cv-t4 .stag {
+    font-size: 10.5px;
+    padding: 2px 10px;
+    border-radius: 4px;
+    background: #f0f0fb;
+    color: #4338ca;
+    font-weight: 500
+}
+
+/* --- T5: MINIMALISTE BW --- */
+.cv-t5 {
+    padding: 50px 52px;
+    min-height: 0
+}
+
+.cv-t5 .top {
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #111
+}
+
+.cv-t5 .photo-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px
+}
+
+.cv-t5 .photo {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem
+}
+
+.cv-t5 .name {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #111;
+    line-height: 1
+}
+
+.cv-t5 .role {
+    font-size: 12.5px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 4px
+}
+
+.cv-t5 .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 11px;
+    color: #777;
+    margin-top: 10px
+}
+
+.cv-t5 .profile {
+    font-size: 12.5px;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 20px
+}
+
+.cv-t5 h2 {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #111;
+    border-left: 3px solid #111;
+    padding-left: 10px;
+    margin: 20px 0 10px
+}
+
+.cv-t5 .item {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 0 18px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0
+}
+
+.cv-t5 .item:last-child {
+    border-bottom: none
+}
+
+.cv-t5 .idate {
+    font-size: 10px;
+    color: #aaa
+}
+
+.cv-t5 .ititle {
+    font-size: 13px;
+    font-weight: 700
+}
+
+.cv-t5 .iorg {
+    font-size: 11px;
+    color: #777
+}
+
+.cv-t5 .idesc {
+    font-size: 11.5px;
+    color: #555;
+    margin-top: 3px;
+    line-height: 1.6
+}
+
+.cv-t5 .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px
+}
+
+.cv-t5 .sk {
+    font-size: 11px;
+    padding: 3px 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #333
+}
+
+.cv-t5 .langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px
+}
+
+.cv-t5 .lang {
+    font-size: 12px;
+    color: #444
+}
+
+/* --- T6: CORPORATE BLEU NUIT --- */
+.cv-t6 {
+    min-height: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif
+}
+
+.cv-t6 .header {
+    background: linear-gradient(135deg, #0f172a, #1e40af);
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    gap: 20px
+}
+
+.cv-t6 .photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, .3);
+    object-fit: cover;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #60a5fa, #34d399);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem
+}
+
+.cv-t6 .h-info {
+    flex: 1
+}
+
+.cv-t6 .h-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15
+}
+
+.cv-t6 .h-role {
+    font-size: 12px;
+    color: #93c5fd;
+    font-weight: 500;
+    margin-top: 3px
+}
+
+.cv-t6 .h-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 8px
+}
+
+.cv-t6 .h-c {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, .65)
+}
+
+.cv-t6 .body {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    min-height: 0
+}
+
+.cv-t6 .left {
+    background: #f8fafc;
+    border-right: 1px solid #e2e8f0;
+    padding: 24px 18px
+}
+
+.cv-t6 .right {
+    padding: 26px 28px
+}
+
+.cv-t6 .s-ttl {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1e3a8a;
+    border-bottom: 2px solid #dbeafe;
+    padding-bottom: 5px;
+    margin: 0 0 9px
+}
+
+.cv-t6 .sect {
+    margin-bottom: 20px
+}
+
+.cv-t6 .s-ci {
+    font-size: 11px;
+    color: #475569;
+    margin-bottom: 3px
+}
+
+.cv-t6 .s-sk {
+    display: inline-block;
+    font-size: 10px;
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 2px 9px;
+    border-radius: 3px;
+    margin: 2px 2px 2px 0;
+    font-weight: 500
+}
+
+.cv-t6 .s-lang {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    margin-bottom: 4px
+}
+
+.cv-t6 .s-lang span {
+    color: #94a3b8
+}
+
+.cv-t6 h2 {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #1e3a8a;
+    border-bottom: 2px solid #1e3a8a;
+    padding-bottom: 5px;
+    margin: 0 0 12px
+}
+
+.cv-t6 .section {
+    margin-bottom: 20px
+}
+
+.cv-t6 .m-profile {
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.7;
+    background: #f0f9ff;
+    border-radius: 8px;
+    padding: 12px;
+    border-left: 3px solid #60a5fa;
+    margin-bottom: 20px
+}
+
+.cv-t6 .item {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f1f5f9
+}
+
+.cv-t6 .item:last-child {
+    border-bottom: none
+}
+
+.cv-t6 .ihead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline
+}
+
+.cv-t6 .ititle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a
+}
+
+.cv-t6 .idate {
+    font-size: 10px;
+    color: #94a3b8;
+    background: #f1f5f9;
+    padding: 2px 7px;
+    border-radius: 4px
+}
+
+.cv-t6 .iorg {
+    font-size: 11px;
+    color: #1e40af;
+    font-weight: 600;
+    margin: 2px 0
+}
+
+.cv-t6 .idesc {
+    font-size: 11.5px;
+    color: #475569;
+    margin-top: 4px;
+    line-height: 1.6
+}
+
+/* --- T7: VERT NATURE --- */
+.cv-t7 {
+    display: flex;
+    min-height: 0
+}
+
+.cv-t7 .sidebar {
+    width: 34%;
+    background: #1a3c34;
+    color: white;
+    padding: 36px 20px
+}
+
+.cv-t7 .main {
+    width: 66%;
+    background: white;
+    padding: 38px 28px
+}
+
+.cv-t7 .photo {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, .25);
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 10px;
+    background: linear-gradient(135deg, #34d399, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem
+}
+
+.cv-t7 .s-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: white;
+    text-align: center;
+    word-break: break-word
+}
+
+.cv-t7 .s-role {
+    font-size: 10.5px;
+    color: rgba(52, 211, 153, .8);
+    text-align: center;
+    margin-top: 4px
+}
+
+.cv-t7 .s-sep {
+    height: 1px;
+    background: rgba(255, 255, 255, .1);
+    margin: 16px 0
+}
+
+.cv-t7 .s-lbl {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, .35);
+    margin: 14px 0 7px
+}
+
+.cv-t7 .s-ci {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, .8);
+    margin-bottom: 4px;
+    word-break: break-all;
+    display: flex;
+    gap: 6px
+}
+
+.cv-t7 .s-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #34d399;
+    flex-shrink: 0;
+    margin-top: 4px
+}
+
+.cv-t7 .s-sk {
+    display: inline-block;
+    font-size: 10px;
+    background: rgba(52, 211, 153, .18);
+    color: rgba(255, 255, 255, .9);
+    padding: 2px 9px;
+    border-radius: 3px;
+    margin: 2px 2px 2px 0
+}
+
+.cv-t7 .s-lang {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    margin-bottom: 4px;
+    color: rgba(255, 255, 255, .8)
+}
+
+.cv-t7 .s-lang-lv {
+    color: rgba(255, 255, 255, .35);
+    font-size: 9.5px
+}
+
+.cv-t7 .m-name {
+    font-size: 25px;
+    font-weight: 800;
+    color: #1a3c34;
+    line-height: 1.1
+}
+
+.cv-t7 .m-role {
+    font-size: 12px;
+    color: #059669;
+    font-weight: 600;
+    margin-top: 3px;
+    margin-bottom: 18px
+}
+
+.cv-t7 .m-profile {
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.7;
+    padding: 12px;
+    background: #f0fdf4;
+    border-radius: 8px;
+    border-left: 3px solid #34d399;
+    margin-bottom: 22px
+}
+
+.cv-t7 h2 {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1a3c34;
+    border-bottom: 2px solid #1a3c34;
+    padding-bottom: 4px;
+    margin: 0 0 12px
+}
+
+.cv-t7 .section {
+    margin-bottom: 20px
+}
+
+.cv-t7 .item {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0fdf4
+}
+
+.cv-t7 .item:last-child {
+    border-bottom: none
+}
+
+.cv-t7 .ihead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline
+}
+
+.cv-t7 .ititle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111
+}
+
+.cv-t7 .idate {
+    font-size: 10px;
+    color: #94a3b8;
+    background: #f0fdf4;
+    padding: 2px 7px;
+    border-radius: 4px
+}
+
+.cv-t7 .iorg {
+    font-size: 11px;
+    color: #059669;
+    font-weight: 600;
+    margin: 2px 0
+}
+
+.cv-t7 .idesc {
+    font-size: 11.5px;
+    color: #475569;
+    margin-top: 4px;
+    line-height: 1.6
+}
+
+/* --- T8: ROSE CRÉATIF --- */
+.cv-t8 {
+    min-height: 0;
+    background: #fff3f0;
+    font-family: 'Plus Jakarta Sans', sans-serif
+}
+
+.cv-t8 .header {
+    background: #c0544a;
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    gap: 18px
+}
+
+.cv-t8 .photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, .4);
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem
+}
+
+.cv-t8 .h-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15
+}
+
+.cv-t8 .h-role {
+    font-size: 12px;
+    color: rgba(255, 255, 255, .75);
+    margin-top: 3px
+}
+
+.cv-t8 .h-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, .7)
+}
+
+.cv-t8 .body {
+    padding: 28px 36px
+}
+
+.cv-t8 .m-profile {
+    font-size: 12.5px;
+    color: #555;
+    line-height: 1.7;
+    background: rgba(192, 84, 74, .08);
+    border-radius: 8px;
+    padding: 14px;
+    border-left: 3px solid #c0544a;
+    margin-bottom: 22px
+}
+
+.cv-t8 h2 {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #c0544a;
+    margin: 20px 0 10px
+}
+
+.cv-t8 .grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 28px
+}
+
+.cv-t8 .item {
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(192, 84, 74, .12)
+}
+
+.cv-t8 .item:last-child {
+    border-bottom: none
+}
+
+.cv-t8 .ihead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start
+}
+
+.cv-t8 .ititle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #3d1a18
+}
+
+.cv-t8 .idate {
+    font-size: 10px;
+    color: #9a8080;
+    white-space: nowrap
+}
+
+.cv-t8 .iorg {
+    font-size: 11px;
+    color: #c0544a;
+    font-weight: 600;
+    margin: 2px 0
+}
+
+.cv-t8 .idesc {
+    font-size: 11.5px;
+    color: #555;
+    margin-top: 4px;
+    line-height: 1.6
+}
+
+.cv-t8 .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px
+}
+
+.cv-t8 .sk {
+    font-size: 11px;
+    padding: 3px 11px;
+    background: rgba(192, 84, 74, .1);
+    border-radius: 99px;
+    color: #7d2a24;
+    font-weight: 500
+}
+
+.cv-t8 .langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px
+}
+
+.cv-t8 .lang {
+    font-size: 12px;
+    color: #555
+}
+
+.cv-t8 .lang strong {
+    color: #c0544a
+}
+
+/* --- T9: SOMBRE TECH --- */
+.cv-t9 {
+    min-height: 0;
+    background: #0f172a;
+    color: #e2e8f0;
+    font-family: 'Plus Jakarta Sans', sans-serif
+}
+
+.cv-t9 .header {
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, .08)
+}
+
+.cv-t9 .photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 3px solid rgba(99, 102, 241, .4);
+    object-fit: cover;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem
+}
+
+.cv-t9 .h-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15
+}
+
+.cv-t9 .h-role {
+    font-size: 12px;
+    color: #818cf8;
+    margin-top: 3px;
+    font-weight: 500
+}
+
+.cv-t9 .h-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 8px;
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, .5)
+}
+
+.cv-t9 .body {
+    display: flex;
+    min-height: 0
+}
+
+.cv-t9 .left {
+    width: 210px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, .03);
+    border-right: 1px solid rgba(255, 255, 255, .07);
+    padding: 22px 18px
+}
+
+.cv-t9 .right {
+    flex: 1;
+    padding: 24px 28px
+}
+
+.cv-t9 .s-lbl {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, .3);
+    margin: 16px 0 7px
+}
+
+.cv-t9 .s-sk {
+    display: inline-block;
+    font-size: 10px;
+    background: rgba(99, 102, 241, .2);
+    color: #a5b4fc;
+    padding: 2px 9px;
+    border-radius: 3px;
+    margin: 2px 2px 2px 0
+}
+
+.cv-t9 .s-lang {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    margin-bottom: 4px;
+    color: rgba(255, 255, 255, .7)
+}
+
+.cv-t9 .s-lang-lv {
+    color: rgba(255, 255, 255, .3)
+}
+
+.cv-t9 .s-ci {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, .6);
+    margin-bottom: 4px;
+    word-break: break-all
+}
+
+.cv-t9 .m-profile {
+    font-size: 12px;
+    color: rgba(255, 255, 255, .6);
+    line-height: 1.7;
+    background: rgba(99, 102, 241, .08);
+    border-radius: 8px;
+    padding: 12px;
+    border-left: 3px solid #6366f1;
+    margin-bottom: 22px
+}
+
+.cv-t9 h2 {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #6366f1;
+    border-bottom: 1px solid rgba(99, 102, 241, .25);
+    padding-bottom: 5px;
+    margin: 0 0 12px
+}
+
+.cv-t9 .section {
+    margin-bottom: 20px
+}
+
+.cv-t9 .item {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, .05)
+}
+
+.cv-t9 .item:last-child {
+    border-bottom: none
+}
+
+.cv-t9 .ihead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline
+}
+
+.cv-t9 .ititle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff
+}
+
+.cv-t9 .idate {
+    font-size: 10px;
+    color: rgba(255, 255, 255, .3);
+    background: rgba(255, 255, 255, .04);
+    padding: 2px 7px;
+    border-radius: 4px
+}
+
+.cv-t9 .iorg {
+    font-size: 11px;
+    color: #818cf8;
+    font-weight: 600;
+    margin: 2px 0
+}
+
+.cv-t9 .idesc {
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, .55);
+    margin-top: 4px;
+    line-height: 1.6
+}
+
+/* --- T10: MAGAZINE ASYMÉTRIQUE --- */
+.cv-t10 {
+    min-height: 0;
+    background: white;
+    font-family: 'Plus Jakarta Sans', sans-serif
+}
+
+.cv-t10 .header {
+    background: #111;
+    padding: 0 0 0 36px;
+    display: flex;
+    align-items: flex-end;
+    height: 80px
+}
+
+.cv-t10 .photo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-right: 18px;
+    margin-bottom: 0;
+    align-self: flex-end
+}
+
+.cv-t10 .h-info {
+    padding: 0 0 16px 0;
+    flex: 1
+}
+
+.cv-t10 .h-name {
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.5px
+}
+
+.cv-t10 .h-role {
+    font-size: 11px;
+    color: #f59e0b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 4px
+}
+
+.cv-t10 .sub-bar {
+    background: #f59e0b;
+    padding: 8px 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px
+}
+
+.cv-t10 .sub-c {
+    font-size: 10.5px;
+    color: #111;
+    font-weight: 500
+}
+
+.cv-t10 .body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 0
+}
+
+.cv-t10 .left {
+    padding: 24px 28px;
+    border-right: 3px solid #f59e0b
+}
+
+.cv-t10 .right {
+    padding: 24px 28px
+}
+
+.cv-t10 h2 {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #f59e0b;
+    margin: 18px 0 10px
+}
+
+.cv-t10 .m-profile {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    border-left: 3px solid #f59e0b;
+    padding-left: 12px
+}
+
+.cv-t10 .item {
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f9f9f9
+}
+
+.cv-t10 .item:last-child {
+    border-bottom: none
+}
+
+.cv-t10 .ihead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start
+}
+
+.cv-t10 .ititle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111
+}
+
+.cv-t10 .idate {
+    font-size: 9.5px;
+    color: #aaa;
+    white-space: nowrap;
+    margin-left: 6px
+}
+
+.cv-t10 .iorg {
+    font-size: 11px;
+    color: #f59e0b;
+    font-weight: 700;
+    margin: 2px 0
+}
+
+.cv-t10 .idesc {
+    font-size: 11.5px;
+    color: #555;
+    margin-top: 3px;
+    line-height: 1.6
+}
+
+.cv-t10 .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px
+}
+
+.cv-t10 .sk {
+    font-size: 11px;
+    padding: 3px 11px;
+    border: 1.5px solid #111;
+    border-radius: 3px;
+    color: #111;
+    font-weight: 600
+}
+
+.cv-t10 .langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px
+}
+
+.cv-t10 .lang {
+    font-size: 12px;
+    color: #555
+}
+
+.cv-t10 .lang strong {
+    color: #f59e0b
+}
