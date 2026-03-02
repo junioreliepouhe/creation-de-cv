@@ -104,7 +104,9 @@ async function extractWithGemini(text, stEl) {
 
         if (!resp.ok) {
             var errorData = await resp.json();
-            console.error("Gemini API Error:", errorData);
+            console.error("Gemini API Error details:", JSON.stringify(errorData, null, 2));
+            // Tentative de lister les modèles pour comprendre le 404
+            listAvailableModels();
             throw new Error(errorData.error?.message || "Erreur API");
         }
 
@@ -227,6 +229,21 @@ JSON Format:
 
 CV CONTENT:
 ${cvText}`;
+}
+
+async function listAvailableModels() {
+    var url = `https://generativelanguage.googleapis.com/v1/models?key=${window.GEMINI_API_KEY}`;
+    console.log("Diagnostic : Liste des modèles disponibles pour cette clé...");
+    try {
+        var resp = await fetch(url);
+        var data = await resp.json();
+        console.log("MODÈLES DISPONIBLES :", data);
+        if (data.models) {
+            console.table(data.models.map(m => ({ name: m.name, version: m.version, displayName: m.displayName })));
+        }
+    } catch (e) {
+        console.error("Erreur durant le diagnostic des modèles:", e);
+    }
 }
 
 function loadScript(src) {
