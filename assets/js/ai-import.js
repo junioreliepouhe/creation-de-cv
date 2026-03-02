@@ -8,7 +8,7 @@
   backend proxy to keep the key secret.
 */
 var GEMINI_MODEL = "gemini-1.5-flash";
-var API_VERSION = "v1";
+var API_VERSION = "v1beta";
 
 async function importCV(inp) {
     if (!inp.files || !inp.files[0]) return;
@@ -90,7 +90,7 @@ async function handlePDFImport(file, st) {
 }
 
 async function extractWithGemini(text, stEl) {
-    var url = `https://generativelanguage.googleapis.com/v1/models/${GEMINI_MODEL}:generateContent?key=${window.GEMINI_API_KEY}`;
+    var url = `https://generativelanguage.googleapis.com/${API_VERSION}/models/${GEMINI_MODEL}:generateContent?key=${window.GEMINI_API_KEY}`;
     var prompt = buildExtractionPrompt(text);
 
     try {
@@ -99,7 +99,7 @@ async function extractWithGemini(text, stEl) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 contents: [{ parts: [{ text: prompt }] }],
-                generation_config: { response_mime_type: "application/json" }
+                generationConfig: { responseMimeType: "application/json" }
             })
         });
 
@@ -124,7 +124,7 @@ async function extractWithGemini(text, stEl) {
 }
 
 async function extractPDFWithGemini(base64, stEl) {
-    var url = `https://generativelanguage.googleapis.com/v1/models/${GEMINI_MODEL}:generateContent?key=${window.GEMINI_API_KEY}`;
+    var url = `https://generativelanguage.googleapis.com/${API_VERSION}/models/${GEMINI_MODEL}:generateContent?key=${window.GEMINI_API_KEY}`;
     var promptText = buildExtractionPrompt("");
 
     try {
@@ -138,7 +138,7 @@ async function extractPDFWithGemini(base64, stEl) {
                         { text: promptText }
                     ]
                 }],
-                generation_config: { response_mime_type: "application/json" }
+                generationConfig: { responseMimeType: "application/json" }
             })
         });
 
