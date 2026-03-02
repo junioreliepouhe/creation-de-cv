@@ -99,7 +99,7 @@ async function extractWithGemini(text, stEl) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 contents: [{ parts: [{ text: prompt }] }],
-                generationConfig: { responseMimeType: "application/json" }
+                generation_config: { response_mime_type: "application/json" }
             })
         });
 
@@ -138,7 +138,7 @@ async function extractPDFWithGemini(base64, stEl) {
                         { text: promptText }
                     ]
                 }],
-                generationConfig: { responseMimeType: "application/json" }
+                generation_config: { response_mime_type: "application/json" }
             })
         });
 
