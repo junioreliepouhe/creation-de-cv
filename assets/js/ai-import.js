@@ -8,7 +8,7 @@
   backend proxy to keep the key secret.
 */
 var GEMINI_MODEL = "gemini-1.5-flash";
-var API_VERSION = "v1beta";
+var API_VERSION = "v1";
 
 async function importCV(inp) {
     if (!inp.files || !inp.files[0]) return;
@@ -98,8 +98,7 @@ async function extractWithGemini(text, stEl) {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }],
-                generationConfig: { responseMimeType: "application/json" }
+                contents: [{ parts: [{ text: prompt }] }]
             })
         });
 
@@ -137,8 +136,7 @@ async function extractPDFWithGemini(base64, stEl) {
                         { inline_data: { mime_type: "application/pdf", data: base64 } },
                         { text: promptText }
                     ]
-                }],
-                generationConfig: { responseMimeType: "application/json" }
+                }]
             })
         });
 
@@ -164,7 +162,10 @@ async function extractPDFWithGemini(base64, stEl) {
 function processAIResponse(txt, stEl) {
     try {
         console.log("Traitement de la réponse AI...");
-        var json = JSON.parse(txt);
+
+        // Nettoyage de la réponse au cas où l'IA ajoute des balises ```json
+        var cleanJson = txt.replace(/```json/g, '').replace(/```/g, '').trim();
+        var json = JSON.parse(cleanJson);
 
         // Sécurité : on s'assure que fillAllFields ne bloque pas tout
         try {
@@ -202,8 +203,7 @@ function processAIResponse(txt, stEl) {
 
 function buildExtractionPrompt(cvText) {
     return `Analyse ce CV et extrait TOUTES les informations vers cet objet JSON. 
-Respecte strictement les types de champs.
-Si une information manque, laisse une chaîne vide.
+IMPORTANT: TA RÉPONSE DOIT ÊTRE UNIQUEMENT LE CODE JSON BRUT. PAS DE TEXTE AVANT OU APRÈS.
 
 JSON Format:
 {
