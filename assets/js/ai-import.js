@@ -138,7 +138,21 @@ async function extractWithGemini(text, stEl) {
             if (i === keys.length - 1) { // Dernière clé
                 console.error("Toutes les clés ont échoué:", err);
                 stEl.style.color = 'var(--red)';
-                stEl.innerHTML = '&#9888; Erreur Gemini : ' + err.message;
+
+                // Si l'erreur mentionne l'activation de l'API, on met le lien en évidence
+                if (err.message.includes("Generative Language API has not been used") || err.message.includes("disabled")) {
+                    var projId = err.message.match(/project (\d+)/)?.[1] || "1047506806121";
+                    var activationUrl = `https://console.developers.google.com/apis/api/generativelanguage.googleapis.com/overview?project=${projId}`;
+                    stEl.innerHTML = `
+                        &#9888; <strong>Action requise :</strong> L'API de secours n'est pas activée.<br>
+                        <a href="${activationUrl}" target="_blank" style="color:white; background:var(--red); padding:5px 10px; border-radius:5px; text-decoration:none; display:inline-block; margin-top:10px">
+                            Activer l'API Gemini ici ➜
+                        </a><br>
+                        <small style="opacity:0.8;display:block;margin-top:5px">Puis réessayez l'importation.</small>
+                    `;
+                } else {
+                    stEl.innerHTML = '&#9888; Erreur Gemini : ' + err.message;
+                }
             }
         }
     }
@@ -187,7 +201,19 @@ async function extractPDFWithGemini(base64, stEl) {
             if (i === keys.length - 1) {
                 console.error("Toutes les clés PDF ont échoué:", err);
                 stEl.style.color = 'var(--red)';
-                stEl.innerHTML = '&#9888; Erreur Gemini PDF : ' + err.message;
+
+                if (err.message.includes("not been used") || err.message.includes("disabled")) {
+                    var projId = err.message.match(/project (\d+)/)?.[1] || "1047506806121";
+                    var activationUrl = `https://console.developers.google.com/apis/api/generativelanguage.googleapis.com/overview?project=${projId}`;
+                    stEl.innerHTML = `
+                        &#9888; <strong>Action requise (Clé de secours) :</strong><br>
+                        <a href="${activationUrl}" target="_blank" style="color:white; background:var(--red); padding:5px 10px; border-radius:5px; text-decoration:none; display:inline-block; margin-top:10px">
+                            Activer l'API ici ➜
+                        </a>
+                    `;
+                } else {
+                    stEl.innerHTML = '&#9888; Erreur Gemini PDF : ' + err.message;
+                }
             }
         }
     }

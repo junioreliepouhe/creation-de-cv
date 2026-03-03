@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (typeof loadFromLocal === 'function') loadFromLocal();
 
+    /* Pre-render default thumbnails */
+    if (typeof renderThumbnails === 'function') renderThumbnails('etudiant');
+
     /* Auto-save listeners */
     document.addEventListener('input', function (e) { if (e.target.closest('.main')) saveToLocal(); });
     document.addEventListener('change', function (e) { if (e.target.closest('.main')) saveToLocal(); });
@@ -115,6 +118,7 @@ function selDom(el) {
 
     setTxt('skillsSubtitle', cfg.skillsSub); setTxt('langsTip', cfg.langsTip); setTxt('hobbiesHint', cfg.hobbiesHint);
     renderSkills(ST.domain);
+    if (typeof renderThumbnails === 'function') renderThumbnails(ST.domain);
 
     document.getElementById('e1').classList.remove('show');
     setTimeout(() => document.querySelector('#step1 .nav')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 200);

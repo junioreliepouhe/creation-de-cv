@@ -402,3 +402,32 @@ function rT10(d, name) {
     if (d.skills.length) h += '<h2>Compétences</h2><div class="skills">' + d.skills.map(s => '<span class="sk">' + esc(s) + '</span>').join('') + '</div>';
     return h + '</div></div></div>';
 }
+/* --- MINI PREVIEWS (FOR SELECTION) --- */
+function renderThumbnails(domain) {
+    var cfg = DOMAIN[domain] || DOMAIN.autre;
+    var dummy = {
+        firstName: 'Elie',
+        lastName: 'POUHE',
+        jobTitle: cfg.titlePH.replace('Ex : ', ''),
+        email: 'contact@exemple.com',
+        phone: '+237 600 000 000',
+        city: 'Yaoundé, Cameroun',
+        profile: cfg.profilePH.replace('Ex : ', '').substring(0, 100) + '...',
+        educations: [{ deg: 'Master Informatique', sch: 'Université', sy: '2020', ey: '2022' }],
+        experiences: [{ ttl: 'Poste Actuel', cmp: 'Entreprise X', start: 'Janv 2023', end: 'En cours' }],
+        skills: cfg.skills.slice(0, 5),
+        languages: [{ nm: 'Français', lv: 'Maternel' }, { nm: 'Anglais', lv: 'Bilingue' }],
+        links: [],
+        projects: [],
+        activities: [],
+        photo: null
+    };
+
+    for (var i = 1; i <= 10; i++) {
+        var id = 't' + i;
+        var container = document.querySelector('.cv-mini.' + id);
+        if (container) {
+            container.innerHTML = renderTpl(dummy, id);
+        }
+    }
+}
