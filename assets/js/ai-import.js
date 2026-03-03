@@ -7,7 +7,7 @@
   your Gemini API Key. For production, ideally you should use a 
   backend proxy to keep the key secret.
 */
-var GEMINI_MODEL = "gemini-1.5-flash";
+var GEMINI_MODEL = "gemini-2.0-flash";
 var API_VERSION = "v1";
 
 async function importCV(inp) {
