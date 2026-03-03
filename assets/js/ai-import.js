@@ -89,74 +89,106 @@ async function handlePDFImport(file, st) {
     r.readAsDataURL(file);
 }
 
+async function getValidKeys() {
+    var keys = [];
+    if (window.CV_CONFIG && window.CV_CONFIG.GEMINI_API_KEYS) {
+        keys = [...window.CV_CONFIG.GEMINI_API_KEYS];
+    } else if (window.GEMINI_API_KEY) {
+        keys = [window.GEMINI_API_KEY];
+    }
+    return keys;
+}
+
 async function extractWithGemini(text, stEl) {
-    var url = `https://generativelanguage.googleapis.com/${API_VERSION}/models/${GEMINI_MODEL}:generateContent?key=${window.GEMINI_API_KEY}`;
+    var keys = await getValidKeys();
     var prompt = buildExtractionPrompt(text);
 
-    try {
-        var resp = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }]
-            })
-        });
+    for (var i = 0; i < keys.length; i++) {
+        var key = keys[i];
+        var url = `https://generativelanguage.googleapis.com/${API_VERSION}/models/${GEMINI_MODEL}:generateContent?key=${key}`;
 
-        if (!resp.ok) {
-            var errorData = await resp.json();
-            console.error("Gemini API Error details:", JSON.stringify(errorData, null, 2));
-            // Tentative de lister les modèles pour comprendre le 404
-            listAvailableModels();
-            throw new Error(errorData.error?.message || "Erreur API");
-        }
+        try {
+            console.log(`Essai avec la clé Gemini n°${i + 1}...`);
+            var resp = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: prompt }] }]
+                })
+            });
 
-        var data = await resp.json();
-        var resultText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-        processAIResponse(resultText, stEl);
-    } catch (err) {
-        console.error("Network/Gemini Error:", err);
-        stEl.style.color = 'var(--red)';
-        if (err.message.includes("Failed to fetch") || err.name === "TypeError") {
-            stEl.innerHTML = '&#9888; <strong>Erreur de connexion :</strong> Impossible de joindre les serveurs Google. Vérifiez votre connexion internet ou VPN.';
-        } else {
-            stEl.innerHTML = '&#9888; Erreur Gemini : ' + err.message;
+            if (!resp.ok) {
+                var errorData = await resp.json();
+                var msg = errorData.error?.message || "";
+                console.warn(`Clé n°${i + 1} échouée:`, msg);
+
+                // Si c'est un problème de quota (429) ou de modèle non trouvé (404), on essaie la clé suivante
+                if (resp.status === 429 || resp.status === 404 || resp.status === 403) {
+                    continue;
+                }
+                throw new Error(msg || "Erreur API");
+            }
+
+            var data = await resp.json();
+            var resultText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            processAIResponse(resultText, stEl);
+            return; // Succès !
+
+        } catch (err) {
+            if (i === keys.length - 1) { // Dernière clé
+                console.error("Toutes les clés ont échoué:", err);
+                stEl.style.color = 'var(--red)';
+                stEl.innerHTML = '&#9888; Erreur Gemini : ' + err.message;
+            }
         }
     }
 }
 
 async function extractPDFWithGemini(base64, stEl) {
-    var url = `https://generativelanguage.googleapis.com/${API_VERSION}/models/${GEMINI_MODEL}:generateContent?key=${window.GEMINI_API_KEY}`;
+    var keys = await getValidKeys();
     var promptText = buildExtractionPrompt("");
 
-    try {
-        var resp = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{
-                    parts: [
-                        { inline_data: { mime_type: "application/pdf", data: base64 } },
-                        { text: promptText }
-                    ]
-                }]
-            })
-        });
+    for (var i = 0; i < keys.length; i++) {
+        var key = keys[i];
+        var url = `https://generativelanguage.googleapis.com/${API_VERSION}/models/${GEMINI_MODEL}:generateContent?key=${key}`;
 
-        if (!resp.ok) {
-            var errorData = await resp.json();
-            throw new Error(errorData.error?.message || "Erreur API PDF");
-        }
+        try {
+            console.log(`Essai (PDF) avec la clé Gemini n°${i + 1}...`);
+            var resp = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [
+                            { inline_data: { mime_type: "application/pdf", data: base64 } },
+                            { text: promptText }
+                        ]
+                    }]
+                })
+            });
 
-        var data = await resp.json();
-        var resultText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-        processAIResponse(resultText, stEl);
-    } catch (err) {
-        console.error("Gemini PDF Error:", err);
-        stEl.style.color = 'var(--red)';
-        if (err.message.includes("Failed to fetch")) {
-            stEl.innerHTML = '&#9888; <strong>Erreur de connexion :</strong> Accès bloqué ou serveur indisponible.';
-        } else {
-            stEl.innerHTML = '&#9888; Erreur Gemini PDF : ' + err.message;
+            if (!resp.ok) {
+                var errorData = await resp.json();
+                var msg = errorData.error?.message || "";
+                console.warn(`Clé PDF n°${i + 1} échouée:`, msg);
+
+                if (resp.status === 429 || resp.status === 404 || resp.status === 403) {
+                    continue;
+                }
+                throw new Error(msg || "Erreur API PDF");
+            }
+
+            var data = await resp.json();
+            var resultText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            processAIResponse(resultText, stEl);
+            return;
+
+        } catch (err) {
+            if (i === keys.length - 1) {
+                console.error("Toutes les clés PDF ont échoué:", err);
+                stEl.style.color = 'var(--red)';
+                stEl.innerHTML = '&#9888; Erreur Gemini PDF : ' + err.message;
+            }
         }
     }
 }
