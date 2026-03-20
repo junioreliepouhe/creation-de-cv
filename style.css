@@ -2136,4 +2136,4 @@
         page-break-inside: avoid !important;
         break-inside: avoid !important;
       }
-    }
+    }@media (max-width: 768px) { .cv-universal { flex-direction: column !important; } .cv-universal .cv-left, .cv-universal .cv-right { width: 100% !important; padding: 20px !important; } }

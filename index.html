@@ -7,7 +7,8 @@
      Bloque l'exécution de scripts tiers non autorisés,
      protège contre les attaques XSS avancées et l'injection de code.
   ============================================= -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.anthropic.com; child-src blob:;">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.anthropic.com; child-src blob:;">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -716,13 +717,13 @@
           style="flex:1;min-width:190px;justify-content:center;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;box-shadow:0 4px 14px rgba(37,99,235,.3)">📝
           Telecharger Word</button>
         <button class="btn btn-edit" onclick="goStep(5)">&#9999;&#65039; Modifier</button>
-        <button class="btn" onclick="location.reload()"
+        <button class="btn" onclick="localStorage.removeItem('creacv_autosave'); location.reload()"
           style="background:var(--al);color:var(--accent);border:1.5px solid var(--ab)">&#128260; Nouveau CV</button>
       </div>
     </div>
 
   </div><!-- /main -->
-  
+
   <!-- DOMPurify pour protection XSS (Sécurité) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
   <!-- Script principal de l'application -->
